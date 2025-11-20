@@ -1,0 +1,580 @@
+/* Gestión de Usuarios */
+.usuarios-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.page-header h2 {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Buscador */
+.search-container {
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    position: relative;
+    max-width: 400px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    border: 1px solid #dcdfe6;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: #409eff;
+    box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.1);
+}
+
+.search-box .icon-search {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #909399;
+}
+
+/* Tabla de usuarios */
+.users-table-container {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid #eaeaea;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.users-table th,
+.users-table td {
+    padding: 1rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ebeef5;
+}
+
+.users-table th {
+    background: #f5f7fa;
+    color: #606266;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 1.25rem 0.75rem;
+}
+
+.users-table th.actions-header {
+    text-align: center;
+    width: 180px;
+}
+
+.users-table tr:hover {
+    background: #f5f7fa;
+}
+
+/* Foto de usuario */
+.user-photo {
+    width: 50px;
+}
+
+.photo-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #eaeaea;
+}
+
+.user-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-id {
+    font-weight: 600;
+    color: #409eff;
+    font-family: 'Courier New', monospace;
+}
+
+/* Badges de estado */
+.status-badge {
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.status-badge.active {
+    background: #f0f9ff;
+    color: #409eff;
+    border: 1px solid #409eff;
+}
+
+.status-badge.inactive {
+    background: #fef0f0;
+    color: #f56c6c;
+    border: 1px solid #f56c6c;
+}
+
+/* Estados clickeables */
+.status-toggle {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.status-toggle:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+/* Botones de acciones - DISEÑO LIMPIO */
+.actions-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    background: transparent;
+    color: #606266;
+}
+
+.action-btn:hover {
+    background: #f5f7fa;
+    color: #409eff;
+}
+
+/* Botones específicos con colores sutiles */
+.edit-btn:hover {
+    background: #ecf5ff;
+    color: #409eff;
+}
+
+.password-btn:hover {
+    background: #f0f9ff;
+    color: #67c23a;
+}
+
+.permissions-btn:hover {
+    background: #fdf6ec;
+    color: #e6a23c;
+}
+
+.delete-btn:hover {
+    background: #fef0f0;
+    color: #f56c6c;
+}
+
+/* Iconos mejorados */
+.icon-edit:before { content: "✏️"; font-size: 0.9rem; }
+.icon-lock:before { content: "🔒"; font-size: 0.9rem; }
+.icon-shield:before { content: "🛡️"; font-size: 0.9rem; }
+.icon-trash:before { content: "🗑️"; font-size: 0.9rem; }
+.icon-plus:before { content: "➕"; }
+.icon-search:before { content: "🔍"; }
+
+/* Tooltips simples */
+.action-btn {
+    position: relative;
+}
+
+.action-btn:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #303133;
+    color: white;
+    padding: 0.4rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+.action-btn:hover::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-bottom-color: #303133;
+    z-index: 1000;
+}
+
+/* Form rows */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Checkbox personalizado */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.checkbox-container:hover {
+    background: #f5f7fa;
+}
+
+.checkbox-container input {
+    display: none;
+}
+
+.checkmark {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #dcdfe6;
+    border-radius: 2px;
+    margin-right: 0.5rem;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-container input:checked + .checkmark {
+    background: #409eff;
+    border-color: #409eff;
+}
+
+.checkbox-container input:checked + .checkmark:after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 1px 1px 0;
+    transform: rotate(45deg);
+}
+
+/* Permisos */
+.permissions-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #eaeaea;
+    border-radius: 6px;
+    padding: 1rem;
+    background: #fafafa;
+}
+
+.permission-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.permission-item:last-child {
+    border-bottom: none;
+}
+
+.permissions-list h4 {
+    margin-bottom: 1rem;
+    color: #303133;
+    font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .usuarios-container {
+        padding: 1rem;
+    }
+    
+    .users-table {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .users-table-container {
+        overflow-x: auto;
+    }
+    
+    .users-table {
+        min-width: 800px;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+    
+    .actions-buttons {
+        gap: 0.25rem;
+    }
+    
+    .action-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Animaciones suaves */
+.users-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.users-table tbody tr {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+/* Agregar estos estilos al archivo existente */
+
+/* Estilos para textarea */
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #dcdfe6;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 80px;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #409eff;
+    box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.1);
+}
+
+/* Ajustar tabla para nueva columna */
+.users-table th:nth-child(7),
+.users-table td:nth-child(7) {
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.users-table td:nth-child(7) {
+    font-size: 0.85rem;
+    color: #606266;
+}
+
+/* Estilos para el enlace de estado */
+.status-link {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.status-link.active {
+    background: #f0f9ff;
+    color: #409eff;
+    border: 1px solid #409eff;
+}
+
+.status-link.inactive {
+    background: #fef0f0;
+    color: #f56c6c;
+    border: 1px solid #f56c6c;
+}
+
+.status-link:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    text-decoration: none;
+}
+
+/* Ocultar notificaciones después de 5 segundos */
+.notification.show {
+    animation: fadeInOut 5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Mejoras para el modal de permisos */
+.permissions-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.permissions-list h4 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Mejoras para los badges de estado */
+.status-badge.super-admin {
+    background: #27ae60 !important;
+    color: white !important;
+    border-color: #27ae60 !important;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.status-badge.active {
+    background: #d4edda !important;
+    color: #155724 !important;
+    border-color: #c3e6cb !important;
+}
+
+.status-badge.inactive {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+    border-color: #f5c6cb !important;
+}
+
+/* Scrollbar personalizado para la lista de permisos */
+.permissions-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.permissions-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.permissions-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.permissions-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Mejoras para el modal de permisos */
+.permissions-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.permissions-list h4 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+}
+
+/* Mejoras para los badges de estado */
+.status-badge.super-admin {
+    background: #27ae60 !important;
+    color: white !important;
+    border-color: #27ae60 !important;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.status-badge.active {
+    background: #d4edda !important;
+    color: #155724 !important;
+    border-color: #c3e6cb !important;
+}
+
+.status-badge.inactive {
+    background: #f8d7da !important;
+    color: #721c24 !important;
+    border-color: #f5c6cb !important;
+}
+
+/* Scrollbar personalizado para la lista de permisos */
+.permissions-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.permissions-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.permissions-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.permissions-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

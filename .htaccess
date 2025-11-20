@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Permitir acceso a la carpeta api
+RewriteRule ^api/ - [L]
+
+# Permitir acceso a assets
+RewriteCond %{REQUEST_URI} !^/assets/
+RewriteCond %{REQUEST_URI} !^/api/
+
+# Redirigir todas las demás solicitudes a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Establecer tiempo de sesión a 30 minutos
+php_value session.gc_maxlifetime 1800
