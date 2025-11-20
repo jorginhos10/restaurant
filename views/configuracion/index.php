@@ -37,23 +37,6 @@
             <div class="config-boton-flecha">→</div>
         </a>
 
-
-        <!-- Botón menu -->
-        <a href="<?php echo BASE_URL; ?>configuracion/menu" class="config-boton">
-            <div class="config-boton-icono">🍽️</div>
-            <div class="config-boton-contenido">
-                <h3>Configuración del Restaurant</h3>
-                <p>Horarios, mesas y servicios</p>
-                <ul class="config-features">
-                    <li>Horarios de atención</li>
-                    <li>Capacidad y mesas</li>
-                    <li>Servicio de delivery</li>
-                    <li>Impuestos y propinas</li>
-                </ul>
-            </div>
-            <div class="config-boton-flecha">→</div>
-        </a>
-
         <!-- Botón Sistema -->
         <div class="config-boton" onclick="mostrarProximamente()">
             <div class="config-boton-icono">💻</div>
